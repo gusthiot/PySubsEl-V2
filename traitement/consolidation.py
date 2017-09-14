@@ -87,9 +87,11 @@ class Consolidation(object):
                         try:
                             maj = float(donnee[bilan.cles['maj']])
                             moj = float(donnee[bilan.cles['moj']])
+                            rj = float(donnee[bilan.cles['rabais']])
                         except ValueError:
-                            Outils.affiche_message("Certaines valeurs (maj, moj) ne sont pas des nombres")
+                            Outils.affiche_message("Certaines valeurs (maj, moj, rabais) ne sont pas des nombres")
                             return 1
+                        maj -= (bj + rj)
                         mois = {'maj': maj, 'moj': moj}
                         for d3 in subgeneraux.codes_d3():
                             try:
