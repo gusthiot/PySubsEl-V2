@@ -71,9 +71,9 @@ class Virement(object):
                     op = subgeneraux.article_t_indice('2').code_t + base + subgeneraux.articles[0].code_d
                     t_ref = subgeneraux.article_t_indice('2').texte_t_ref
 
-                    fichier_writer.writerow([t_ref, t_ref, "", "%.2f" % dcl['bonus'], "", "",
-                                             subgeneraux.fonds, op, "", "", "", reference, "", "", "", "", "", "", "",
-                                             "CMi : " + texte, dcl['sap']])
+                    fichier_writer.writerow([t_ref, reference, "", "%.2f" % dcl['bonus'], "", "",
+                                             subgeneraux.fonds, op, "", "", "", "Abrev Labo : " + dcl['abrev'], "", "", "", "",
+                                             "", "", "", "CMi : " + texte, dcl['sap']])
 
                     poste = subgeneraux.article_t_indice('2').texte_t_long
                     prestation = subgeneraux.articles[0].intitule_long
@@ -84,9 +84,9 @@ class Virement(object):
                     texte = subgeneraux.article_t(t3).texte_t_court + " / " + subgeneraux.articles[0].intitule_court
                     t_ref = subgeneraux.article_t(t3).texte_t_ref
 
-                    fichier_writer.writerow([t_ref, t_ref, "", "%.2f" % client_t3['sm'], "", "",
-                                             subgeneraux.fonds, op, "", "", "", reference, "", "", "", "", "", "", "",
-                                             "CMi : " + texte, dcl['sap']])
+                    fichier_writer.writerow([t_ref, reference, "", "%.2f" % client_t3['sm'], "", "",
+                                             subgeneraux.fonds, op, "", "", "", "Abrev Labo : " + dcl['abrev'], "", "", "", "",
+                                             "", "", "", "CMi : " + texte, dcl['sap']])
 
                     poste = subgeneraux.article_t(t3).texte_t_long
                     prestation = subgeneraux.articles[0].intitule_long
@@ -97,9 +97,9 @@ class Virement(object):
                             op = t3 + base + article.code_d
                             texte = subgeneraux.article_t(t3).texte_t_court + " / " + article.intitule_court
 
-                            fichier_writer.writerow([t_ref, t_ref, "", "%.2f" % client_t3['s' + article.code_d],
-                                                     "", "", subgeneraux.fonds, op, "", "", "", reference, "", "", "",
-                                                     "", "", "", "", "CMi : " + texte, dcl['sap']])
+                            fichier_writer.writerow([t_ref, reference, "", "%.2f" % client_t3['s' + article.code_d],
+                                                     "", "", subgeneraux.fonds, op, "", "", "", "Abrev Labo : " + dcl['abrev'],
+                                                     "", "", "", "", "", "", "", "CMi : " + texte, dcl['sap']])
 
                             poste = subgeneraux.article_t(t3).texte_t_long
                             prestation = article.intitule_long
