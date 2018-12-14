@@ -122,7 +122,12 @@ class Annexes(object):
         inc_4 = 0
         taille_d3 = len(subgeneraux.articles_d3)
 
-        for num_compte, compte in sorted(client['comptes'].items()):
+        numbers = {}
+        for id_compte, compte in client['comptes'].items():
+            numbers[compte['num_compte']] = id_compte
+
+        for num_compte, id_compte in sorted(numbers.items()):
+            compte = client['comptes'][id_compte]
 
             # ## COMPTE
 

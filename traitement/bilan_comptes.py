@@ -42,10 +42,16 @@ class BilanComptes(object):
         """
         lignes = []
         for code_client, client in sorted(consolidation.clients.items()):
-            for num_compte, compte in sorted(client['comptes'].items()):
+
+            numbers = {}
+            for id_compte, compte in client['comptes'].items():
+                numbers[compte['num_compte']] = id_compte
+
+            for num_compte, id_compte in sorted(numbers.items()):
+                compte = client['comptes'][id_compte]
                 if compte['subs'] > 0:
                     ligne = [subedition.annee_fin_general, subedition.mois_fin_general, code_client, client['sap'],
-                             client['abrev'], client['nom'], client['type'], client['nature'], compte['id_compte'],
+                             client['abrev'], client['nom'], client['type'], client['nature'], id_compte,
                              num_compte, compte['intitule'], compte['type'], compte['t3'],
                              Outils.format_2_dec(compte['s-mat']), Outils.format_2_dec(compte['s-mot'])]
                     for categorie in subgeneraux.codes_d3():

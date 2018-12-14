@@ -100,26 +100,26 @@ class Consolidation(object):
                                 Outils.affiche_message("Certaines valeurs d3 ne sont pas des nombres")
                                 return 1
                             mois[d3 + 'j'] = j
-                        if num_compte not in comptes:
+                        if id_compte not in comptes:
                             annees = {}
                             if ok_sub:
                                 annees[bilan.annee] = {'mois': {bilan.mois: mois}}
                             code_t3 = subcomptes.donnees[id_sub]['type_subside']
                             type_s = subgeneraux.article_t(code_t3).texte_t_court
-                            comptes[num_compte] = {'id_sub': id_sub, 'id_compte': id_compte, 'intitule': intitule,
-                                                   'type_p': subcomptes.donnees[id_sub]['intitule'],
-                                                   'type': type_compte, 'type_s': type_s, 't3': code_t3,
-                                                   'coherent': True, 'annees': annees}
+                            comptes[id_compte] = {'id_sub': id_sub, 'num_compte': num_compte, 'intitule': intitule,
+                                                  'type_p': subcomptes.donnees[id_sub]['intitule'],
+                                                  'type': type_compte, 'type_s': type_s, 't3': code_t3,
+                                                  'coherent': True, 'annees': annees}
                         else:
-                            if id_sub != comptes[num_compte]['id_sub']:
-                                print(comptes[num_compte]['id_compte'], id_sub, comptes[num_compte]['id_sub'])
-                                comptes[num_compte]['coherent'] = False
+                            if id_sub != comptes[id_compte]['id_sub']:
+                                print(comptes[id_compte]['id_compte'], id_sub, comptes[id_compte]['id_sub'])
+                                comptes[id_compte]['coherent'] = False
                                 coherence_comptes += 1
                             if ok_sub:
-                                if bilan.annee in comptes[num_compte]['annees']:
-                                    comptes[num_compte]['annees'][bilan.annee]['mois'][bilan.mois] = mois
+                                if bilan.annee in comptes[id_compte]['annees']:
+                                    comptes[id_compte]['annees'][bilan.annee]['mois'][bilan.mois] = mois
                                 else:
-                                    comptes[num_compte]['annees'][bilan.annee] = {'mois': {bilan.mois: mois}}
+                                    comptes[id_compte]['annees'][bilan.annee] = {'mois': {bilan.mois: mois}}
 
         if coherence_clients > 0:
             msg = "Les clients suivants ne sont pas homogènes sur la période, " \
