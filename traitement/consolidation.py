@@ -112,7 +112,6 @@ class Consolidation(object):
                                                   'coherent': True, 'annees': annees}
                         else:
                             if id_sub != comptes[id_compte]['id_sub']:
-                                print(comptes[id_compte]['id_compte'], id_sub, comptes[id_compte]['id_sub'])
                                 comptes[id_compte]['coherent'] = False
                                 coherence_comptes += 1
                             if ok_sub:
@@ -135,7 +134,7 @@ class Consolidation(object):
             for k, v in self.clients.items():
                 for l, w in v['comptes'].items():
                     if not w['coherent']:
-                        msg += " - " + k + "/" + v['abrev'] + "/" + w['id_compte'] + "/" + l + "/" + \
+                        msg += " - " + k + "/" + v['abrev'] + "/" + w['num_compte'] + "/" + l + "/" + \
                                w['intitule'] + "\n"
             Outils.affiche_message(msg)
 
