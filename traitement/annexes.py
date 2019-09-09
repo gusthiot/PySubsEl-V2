@@ -124,9 +124,9 @@ class Annexes(object):
 
         numbers = {}
         for id_compte, compte in client['comptes'].items():
-            numbers[compte['num_compte']] = id_compte
+            numbers[id_compte] = compte['num_compte']
 
-        for num_compte, id_compte in sorted(numbers.items()):
+        for id_compte, num_compte in sorted(numbers.items(), key=lambda x: x[1]):
             compte = client['comptes'][id_compte]
 
             # ## COMPTE

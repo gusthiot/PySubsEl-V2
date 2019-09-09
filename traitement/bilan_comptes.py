@@ -45,9 +45,9 @@ class BilanComptes(object):
 
             numbers = {}
             for id_compte, compte in client['comptes'].items():
-                numbers[compte['num_compte']] = id_compte
+                numbers[id_compte] = compte['num_compte']
 
-            for num_compte, id_compte in sorted(numbers.items()):
+            for id_compte, num_compte in sorted(numbers.items(), key=lambda x: x[1]):
                 compte = client['comptes'][id_compte]
                 if compte['subs'] > 0:
                     ligne = [subedition.annee_fin_general, subedition.mois_fin_general, code_client, client['sap'],
